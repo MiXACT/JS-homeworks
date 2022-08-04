@@ -16,14 +16,14 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+  registerEvents() {    
+    document.addEventListener('keyup', function(keyPressed) {
+      if (goType.currentSymbol.textContent == keyPressed.key.toLowerCase()) {
+        goType.success();
+      } else {
+        goType.fail();
+      }
+    });
   }
 
   success() {
@@ -86,5 +86,4 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
-
+let goType = new Game(document.getElementById('game'));
